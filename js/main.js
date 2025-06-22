@@ -49,10 +49,10 @@ function renderUsers(usersList, saveList){
 // users part end 
 
 
-//post part
+//posts part
 function getPostById(id){
    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`).then(res => res.json()).then(data => {
-       console.log(data);
+       renderPosts(data, elPostsList)
    })
 }
 function renderPosts(postList, saveList){
@@ -61,9 +61,8 @@ function renderPosts(postList, saveList){
         let elItem = document.createElement("li")
         elItem.className = "post-item left-[7px] right-[3px] post-item  mx-auto  w-[85%]  p-2 bg-[#3670a7] text-white relative  rounded-[15px] text-[15px]"
         elItem.innerHTML = `
-             <li>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio numquam nesciunt illo debitis odio voluptas eaque unde sit quasi enim ab voluptatem explicabo suscipit, alias quos, voluptates eveniet provident magni!
-               </li>
+             <h2>${item.title}</h2>
+             <P>${item.body}</P>
         `
        
         saveList.appendChild(elItem)
